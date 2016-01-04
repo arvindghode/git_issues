@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+        <title>Index Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+<h5>Enter the URL</h5>
+
+<form class="form-horizontal" action="/issues" method="POST">
+    {% csrf_token %}
+<fieldset>
+<div class="form-group">
+  <div class="col-md-4">
+  <input id="textinput" type="text" name="git_url" class="form-control input-md">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-md-4">
+    <button id="singlebutton" type="submit" value="submit" class="btn btn-primary">Button</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+
+{% if data %}
+
+<div style="width: 60%">
+    <table class="table table-striped">
+      <tr>
+          <td style="width: 30%">Total number of open issues:</td>
+          <td style="width: 30%">{{ total_open_issues }}</td>
+      </tr>
+      <tr>
+          <td style="width: 30%">Number of open issues that were opened in the last 24 hours:</td>
+          <td style="width: 30%">{{ total_open_issues_24hr }}</td>
+      </tr>
+      <tr>
+          <td style="width: 30%">Number of open issues that were opened more than 24 hours ago but less than 7 days ago:</td>
+          <td style="width: 30%">{{ issues_24ago_7days }}</td>
+      </tr>
+      <tr>
+          <td style="width: 30%">Number of open issues that were opened more than 7 days ago:</td>
+          <td style="width: 30%">{{ issues_open_more_7days }}</td>
+      </tr>
+    </table>
+</div>
+
+{% endif %}
+
+</body>
+</html>
