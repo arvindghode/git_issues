@@ -17,3 +17,6 @@ Using github api we can get issue list, using the list we can get the number of 
 
 Below is the link for live application:
 https://protected-river-5492.herokuapp.com/
+
+##### improvement for the current solution
+currently im getting the issues individually for each condition which will take much time since its making 3 requests to github. Improvement for this I found is we can get all the issues in one request which will give us a JSON response by parsing the JSON we can easily saperate the open issues since it will make only one API request will be time consuming. 
